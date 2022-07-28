@@ -1,21 +1,15 @@
-name: Unit test coverage
+name: dev pr request
 
-on: 
+on:
   pull_request:
     types: [opened]
     branches:
-      - QA
+      - dev
+
 jobs:
   test-transition-issue:
     name: Transition Issue
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test -- --coverage
     steps:
     - name: Login
       uses: atlassian/gajira-login@master
@@ -27,4 +21,4 @@ jobs:
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ github.head_ref }}
-        transition: "InCodeReview"
+        transition: "ReadyForCodeReview"

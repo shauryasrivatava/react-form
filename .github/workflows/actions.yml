@@ -1,0 +1,71 @@
+name: Github to Jira integration
+
+on: pull_request  
+
+jobs:
+  test-transition-issue:
+    name: Transition Issue
+    runs-on: ubuntu-latest
+    steps:
+    - name: Login
+      uses: atlassian/gajira-login@master
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+        
+        
+    - name: Transition issue
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: ${{ github.head_ref }}
+        transition: "IN PROGRESS"
+        
+    - name: Comment on issue
+      uses: atlassian/gajira-comment@master
+      with:
+        issue: ${{ github.head_ref }}
+        comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"      
+    
+    # - name: Transition state Merged PR
+    #   uses: atlassian/gajira-transition@master
+    #   if: github.event.pull_request.merged == true
+    #   with:
+    #     issue: ${{ github.head_ref }}
+    #     transition: "READYFORCODEREVIEW"
+    
+# on:
+#   pull_request:
+#     types: [opened]
+#     branches:
+#       - dev
+
+# jobs:
+#   test-transition-issue:
+#     name: Transition request
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Transition review
+#       uses: atlassian/gajira-transition@master
+#       with:
+#         issue: ${{ github.head_ref }}
+#         transition: "READYFORCODEREVIEW"
+
+# on:
+#   pull_request:
+#     types: [closed]
+#     branches:
+#       - dev
+
+# jobs:
+#   test-transition-issue:
+#     name: Transition merged
+#     runs-on: ubuntu-latest
+#     if: github.event.pull_request.merged == true
+#     steps:
+#     - name: Transition merged
+#       uses: atlassian/gajira-transition@master
+#       with:
+#         issue: ${{ github.head_ref }}
+#         transition: "INCODEREVIEW"
+

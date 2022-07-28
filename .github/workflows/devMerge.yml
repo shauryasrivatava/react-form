@@ -1,21 +1,15 @@
-name: Unit test coverage
+name: pr merge
 
-on: 
+on:
   pull_request:
-    types: [opened]
+    types: [closed]
     branches:
-      - QA
+      - dev
+
 jobs:
   test-transition-issue:
-    name: Transition Issue
+    name: Transition merge
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test -- --coverage
     steps:
     - name: Login
       uses: atlassian/gajira-login@master
@@ -23,8 +17,10 @@ jobs:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
         JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-    - name: Transition review
+
+    - name: Transition merged
       uses: atlassian/gajira-transition@master
+      if: github.event.pull_request.merged == true
       with:
         issue: ${{ github.head_ref }}
         transition: "InCodeReview"
