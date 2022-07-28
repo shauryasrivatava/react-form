@@ -30,7 +30,7 @@ yarn start
 
 ## Set up
 **(1) Create-react-app to create a project.**
-When the project folder is already created
+When the project folder is already cre
 ```bash
 npx create-react-app ./
 ```
