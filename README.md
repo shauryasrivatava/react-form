@@ -29,7 +29,7 @@ yarn start
 ```
 
 ## Set up
-**(1) Create-react-app to create a project.**
+**(1) Create-react-app to create a proj.**
 When the project folder is already created
 ```bash
 npx create-react-app ./
