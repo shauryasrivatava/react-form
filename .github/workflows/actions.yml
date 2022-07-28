@@ -1,11 +1,10 @@
 name: Github to Jira integration
 
-on: push
+on: pull_request
 
 jobs:
   test-transition-issue:
     name: Transition Issue
-    if:  startsWith(github.head_ref, 'DTAEC-')
     runs-on: ubuntu-latest
     steps:
     - name: Login
@@ -28,20 +27,20 @@ jobs:
         issue: ${{ github.head_ref }}
         comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"  
 
-  # PrRequest: 
-  #   needs: test-transition-issue
-  #   name: create_prRequest
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Login
-  #     uses: atlassian/gajira-login@master
-  #     env:
-  #       JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
-  #       JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
-  #       JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-  #   - name: Transition review
-  #     uses: atlassian/gajira-transition@master
-  #     with:
-  #       issue: ${{ github.head_ref }}
-  #       transition: "ReadyForCodeReview"    
+  PrRequest: 
+    needs: test-transition-issue
+    name: create_prRequest
+    runs-on: ubuntu-latest
+    steps:
+    - name: Login
+      uses: atlassian/gajira-login@master
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+    - name: Transition review
+      uses: atlassian/gajira-transition@master
+      with:
+        issue: ${{ github.head_ref }}
+        transition: "ReadyForCodeReview"    
     
