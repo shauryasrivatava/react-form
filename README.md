@@ -41,7 +41,7 @@ When the folder needs to be created at the same time
 npx create-react-app my-app 
 ```
 
-Instead of npx, we can also use npm or yarn as below
+Instead of npx, we can also use npm or yarn as
 ```bash
 npm init react-app my-app
 yarn create react-app my-app
