@@ -48,3 +48,22 @@ jobs:
         with:
           issue: ${{ github.head_ref }}
           transition: "ReadyForStagingRelease"
+
+  Sonar: 
+    needs: QA
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Transition sonar
+        uses: atlassian/gajira-transition@master
+        if: github.event.pull_request.merged == true
+        with:
+          issue: ${{ github.head_ref }}
+          transition: "ReadyForProdRelease"
