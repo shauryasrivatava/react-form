@@ -44,12 +44,15 @@ jobs:
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
     - name: Update kube config
       run: >
-        SET AWS_ACCESS_KEY_ID=ASIATR65N2PZVL2CRJMT
-        SET AWS_SECRET_ACCESS_KEY=GoAXkSFwDViHyx82MmQa/3jFdhXPXRSAXFwtTJ/Z
-        SET AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEBcaCXVzLWVhc3QtMSJIMEYCIQDzVXIOvJ3zqB/bmTbhYNG5OQCK8AbjI2N6zy+BpPet9wIhALGh25iWQatNvDnn7ZL3dIjLoaR7NYv6/TnP1CXyv4FxKp4DCHAQABoMMjQ0NzQwNjQxNzc5IgyMx23UfdAlEKJgCCoq+wInAclSw6sSBi6tg9m84n06R5yHCwkTCLJjPUpMmnMt/khyYifEn/BBp2gOUsdNb7z/rPrFIgcFXlglVmjWsbzy28dXS/1t3bfAPHDfsTOamaKnZSMOFJ/Ht7nYsccjP6k1Ve41fQfbXOi8OGVCxm6zPrG2DGIxDm6UBiV1mkqR6D/WuPwgRyOKHG9cxz2UyGl5iBIFbK+meD9jCLrEJzox9frHdPxcywD9Li8BcB3GmHgT0/B7mH+ByY7xci2CoaNCkzIY7Xrl+XzFPhF4wIh9x8Z1AiH7HUjSGHFZ3CdsixjIezxrAydem/JR1Ai5iTSjiQ0CBa7DtYEo9jx+UYYBKQ+6h1tVE+XECXttOCBFgwebjDq2evr8vAAY9itxH3sQcKKx/Z4nP+L8UF37S1jnv5FnDnw9Tfew2Bq4b3bZ4wxu5ZJgbkeMMDqcGmMt6pjBXNO1UwDw2NLvSXq9FPksq2FRvm8SFt3GyEbLu5AV9ITI2muogG56/hIiMMKUo5cGOqUBrV7BQH74l7tvFzBvMQbveVMcPPjLMZFXhoL9bmfzfZHG17TVm28yN5WGmknzXqzNmzIIyRvLUZFRj4maTi2SdwQ6DRuFZxkUYATHJp07TLT7UV9VGK8aG8wkwqL4v27OfxP47Lv3Lh7JLbOAPcnZQxDf67QtgsFsM6xHJpO/blnXVSYpqzzY6dkEoUMnjevUrqJLlxLqC3eV77Hw/YyCWbZUWjyF
+        export AWS_ACCESS_KEY_ID="ASIATR65N2PZV7EKRF5V"
+        export AWS_SECRET_ACCESS_KEY="wHcfvcIbD0m1jXVSM7kyTvxu8fF+oS7OHf+1Yl/U"
+        export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEBwaCXVzLWVhc3QtMSJHMEUCIQCJGi7FyPGqY6kkqjm9TlsmcitOOG0F1+ldPDp/VS2MvgIgbhL+d6CyqHZ7wU60kpDCinjlzfl35KHta375hP95UigqngMIdBAAGgwyNDQ3NDA2NDE3NzkiDFwn3GuJH8l/5dqEoyr7AkOvSJII19JVlNGFa1Ts1ycX0uDRGN+m6YT1/seE5PHUODtUlltw2DxGTw8Gj2B6G57UuSzcWmKgxCCIelUs9A6GfpZP4tEPZJjuvL24BEFKVr5817K6On8Uo75e4IfmDRr0zxJ84Bbc9nGJgKM6ZwbPJmUgvzcnKPmbNWIUXFeL1nuUAzcw0Q0Z70je5go28YkC+rwQZUwYyXq93xV0upCXZDuMKgQEPIr8dJVmrwaoenqezvPl8GdT9z8iUlStxEDIQTPoFAMT9AZaUygTmThG5ol6XJR5ODMHwL20nG7PRfwoobvcaJ90UMUG7Rv+KnCC0P4XznjW+IUBDa8X8gIoTivdVuvOaFqeESb5oHjOoMhNVwqwudH8ky7KXGYBUb3wtGgocJmL1txkLbr6cmMaKrvVop8CdTOQBPORHvO3GEBMTlklCFsrnBWQ+Njs24stYEe/8JfOT4XYxWzu1eLluTe0AvM8CKLf/aVJxAMsEQRM7Wr5DFM/F0Qwu4uklwY6pgE3668jquV4Ygf+xdX2eMexUufZv6sbWm1ODlK2FfiW616gubrohPIMsb6bc2Wz80QE21pfBIeZXnup0PKr8rO7FFdFBH5HgtqD5iRPN/lltUTmDCaI28wjLPbYYeGuQsqyK0SlL+L5U2U4xRHYIkoDLKU9W3qHCC3pG0TY+AQhxrSrNjxsmlPnLjgnwMZm8Twp0E8fXua1uXJ98ULDxL1/KgFwnN1K"
+        |
+        aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
+        
     
-    - name: jai shree ram
-      run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
+#     - name: jai shree ram
+#       run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
 
     - name: Deploy image to Amazon EKS
       run: |
