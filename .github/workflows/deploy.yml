@@ -23,10 +23,8 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-#         aws-access-key-id: ${{ secrets.acessKeyID }}
-#         aws-secret-access-key: ${{ secrets.scretAccessKey }}
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-access-key-id: ${{ secrets.acessKeyID }}
+        aws-secret-access-key: ${{ secrets.scretAccessKey }}
         aws-region: us-east-1
 
     - name: Login to Amazon ECR
@@ -45,6 +43,12 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
     - name: Update kube config
+      run: >
+        SET AWS_ACCESS_KEY_ID=ASIATR65N2PZVL2CRJMT
+        SET AWS_SECRET_ACCESS_KEY=GoAXkSFwDViHyx82MmQa/3jFdhXPXRSAXFwtTJ/Z
+        SET AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEBcaCXVzLWVhc3QtMSJIMEYCIQDzVXIOvJ3zqB/bmTbhYNG5OQCK8AbjI2N6zy+BpPet9wIhALGh25iWQatNvDnn7ZL3dIjLoaR7NYv6/TnP1CXyv4FxKp4DCHAQABoMMjQ0NzQwNjQxNzc5IgyMx23UfdAlEKJgCCoq+wInAclSw6sSBi6tg9m84n06R5yHCwkTCLJjPUpMmnMt/khyYifEn/BBp2gOUsdNb7z/rPrFIgcFXlglVmjWsbzy28dXS/1t3bfAPHDfsTOamaKnZSMOFJ/Ht7nYsccjP6k1Ve41fQfbXOi8OGVCxm6zPrG2DGIxDm6UBiV1mkqR6D/WuPwgRyOKHG9cxz2UyGl5iBIFbK+meD9jCLrEJzox9frHdPxcywD9Li8BcB3GmHgT0/B7mH+ByY7xci2CoaNCkzIY7Xrl+XzFPhF4wIh9x8Z1AiH7HUjSGHFZ3CdsixjIezxrAydem/JR1Ai5iTSjiQ0CBa7DtYEo9jx+UYYBKQ+6h1tVE+XECXttOCBFgwebjDq2evr8vAAY9itxH3sQcKKx/Z4nP+L8UF37S1jnv5FnDnw9Tfew2Bq4b3bZ4wxu5ZJgbkeMMDqcGmMt6pjBXNO1UwDw2NLvSXq9FPksq2FRvm8SFt3GyEbLu5AV9ITI2muogG56/hIiMMKUo5cGOqUBrV7BQH74l7tvFzBvMQbveVMcPPjLMZFXhoL9bmfzfZHG17TVm28yN5WGmknzXqzNmzIIyRvLUZFRj4maTi2SdwQ6DRuFZxkUYATHJp07TLT7UV9VGK8aG8wkwqL4v27OfxP47Lv3Lh7JLbOAPcnZQxDf67QtgsFsM6xHJpO/blnXVSYpqzzY6dkEoUMnjevUrqJLlxLqC3eV77Hw/YyCWbZUWjyF
+    
+    - name: jai shree ram
       run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
 
     - name: Deploy image to Amazon EKS
