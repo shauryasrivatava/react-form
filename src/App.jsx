@@ -13,7 +13,7 @@ export default class App extends React.Component {
         return (
             <div>
                 <Jumbotron>
-                    <TitleHeader className="text-center" title="React Form"/>
+                    <TitleHeader className="text-center" title="React"/>
                     <br></br>         
             <div className="text-center">
                     <h1>made by team2</h1>
