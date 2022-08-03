@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-hello
+  name: svc-react
 spec:
   selector:
     app: hello
