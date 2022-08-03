@@ -14,7 +14,15 @@ export default class App extends React.Component {
             <div>
                 <Jumbotron>
                     <TitleHeader className="text-center" title="React Form"/>
-                </Jumbotron>
+                    </br>         
+            <div className="text-center">
+                    <h1>made by team2</h1>
+                    <h3>Deepu is a champion</h3>
+                    <h3>Shaurya</h3>
+                    <h3>Mukesh</h3>
+                    <h3>Ayush</h3>
+            </div>    
+            </Jumbotron>
                 <Container>
                     <Row>
                         <Column className="col-md-6 offset-md-3">
