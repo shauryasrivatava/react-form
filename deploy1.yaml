@@ -15,10 +15,10 @@ spec:
       labels:
         app: hello
     spec:
-      containers:
-      
+      containers: 
       - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2:latest
         name: hello
+        imagePullPolicy: Always 
  
         ports:
         - containerPort: 8000
