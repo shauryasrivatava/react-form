@@ -17,7 +17,7 @@ export default class App extends React.Component {
                     <br></br>         
             <div className="text-center">
                     <h1>made by team2</h1>
-                    <h3>Deepu is a champion</h3>
+                    <h3>Deepu is a CHAMPION</h3>
                     <h3>Shaurya</h3>
                     <h3>Mukesh</h3>
                     <h3>Ayush</h3>
