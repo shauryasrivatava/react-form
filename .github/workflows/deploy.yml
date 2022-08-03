@@ -44,7 +44,9 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
         docker push -a $ECR_REGISTRY/$ECR_REPOSITORY
     - name: Update kube config
-      run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
+#       run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
+      run: aws eks --region us-east-1 update-kubeconfig --name helloteam2
+
         
     
 #     - name: jai shree ram
