@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-hello-os
+  labels:
+    app: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      volumes:
+         - name: configmap-volume
+           configMap:
+              name: game-demo
+      
+         - name: foo
+           secret:
+              secretName: mysecret
+              defaultMode: 0400
+      nodeSelector:
+        eks.amazonaws.com/capacityType: SPOT 
+      containers:
+      
+      - image: gcr.io/google-samples/hello-app:1.0
+        name: hello
+ 
+        ports:
+        - containerPort: 8080
+
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "160m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        readinessProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
+        livenessProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+
+        startupProbe:
+            httpGet:
+              path: /hello
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 10
+
+        volumeMounts:
+          - name: configmap-volume
+            mountPath: /etc/config
+          - name: foo
+            mountPath: /etc/foo
+  
