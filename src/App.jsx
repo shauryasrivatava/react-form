@@ -14,7 +14,7 @@ export default class App extends React.Component {
             <div>
                 <Jumbotron>
                     <TitleHeader className="text-center" title="React Form"/>
-                    <br>         
+                    <br></br>         
             <div className="text-center">
                     <h1>made by team2</h1>
                     <h3>Deepu is a champion</h3>
