@@ -20,13 +20,13 @@ spec:
         name: hello
  
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
 
         resources:
           requests:
-            memory: "64Mi"
+            memory: "128Mi"
             cpu: "250m"
           limits:
-            memory: "64Mi"
+            memory: "128Mi"
             cpu: "250m"
        
