@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       
-      - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/aws_depolyment_team2:latest
+      - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2:latest
         name: hello
  
         ports:
@@ -24,7 +24,7 @@ spec:
 
         resources:
           requests:
-            memory: "64Mi"
+            memory: "128Mi"
             cpu: "250m"
           limits:
             memory: "64Mi"
