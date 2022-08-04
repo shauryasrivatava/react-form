@@ -56,7 +56,7 @@ jobs:
       run: |
         kubectl apply -f deploy1.yaml
         kubectl apply -f svc1.yaml
-        kubectl delete pod first-hello-os-76f59766c4-vhx99
+        kubectl rollout restart deployment first-hello-os -n default
 #         kubectl apply -f eks/service.yaml
 #         kubectl apply -f eks/issuer.yaml
 #         kubectl apply -f eks/ingress.yaml
