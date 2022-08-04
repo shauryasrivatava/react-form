@@ -3,7 +3,7 @@ name: Github to Jira integration
 on: 
   push: 
     branches: 
-      - 'DTAEC+'
+      - 'DTAEC-?'
 
 jobs:
   test-transition-issue:
