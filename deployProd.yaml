@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: first-hello-os
-  namespace: default
+  name: React-Form
+  namespace: dev
   labels:
-    app: hello
+    app: Form
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello
+      app: Form
   template:
     metadata:
       labels:
-        app: hello
+        app: Form
     spec:
       containers: 
       - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2:latest
-        name: hello
+        name: Form
         imagePullPolicy: Always 
  
         ports:

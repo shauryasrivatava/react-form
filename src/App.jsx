@@ -9,20 +9,14 @@ import Form from './components/Form';
 
 export default class App extends React.Component {
 
-    render () {
+    render() {
         return (
             <div>
                 <Jumbotron>
-                    <TitleHeader className="text-center" title="React"/>
-                    <br></br>         
-            <div className="text-center">
-                    <h1>made by team2222</h1>
-                    <h3>Deepu</h3>
-                    <h3>Shaurya</h3>
-                    <h3>Mukesh</h3>
-                    <h3>Ayush</h3>
-            </div>    
-            </Jumbotron>
+                    <TitleHeader className="text-center" title="React" />
+                    <br></br>
+                    <h1 className="text-center">V1.0</h1>
+                </Jumbotron>
                 <Container>
                     <Row>
                         <Column className="col-md-6 offset-md-3">

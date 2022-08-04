@@ -1,11 +1,10 @@
 name: Deploy to production
 
-on:
-  push:
+on: 
+  push: 
     branches: [ master ]
 
-jobs:
-
+jobs: 
   deploy:
     name: Build image
     runs-on: ubuntu-latest
@@ -47,25 +46,8 @@ jobs:
       run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
      
 
-        
-    
-#     - name: jai shree ram
-#       run: aws eks --region us-east-1 update-kubeconfig --name aws_depolyment_team2
-
     - name: Deploy image to Amazon EKS
       run: |
-        kubectl apply -f deploy1.yaml
-        kubectl apply -f svc1.yaml
-        kubectl rollout restart deployment first-hello-os -n default
-#         kubectl apply -f eks/service.yaml
-#         kubectl apply -f eks/issuer.yaml
-#         kubectl apply -f eks/ingress.yaml
-
-#     - name: Deploy to Kubernetes cluster                                                                            
-#       uses: kodermax/kubectl-aws-eks@master                                                                         
-#       env:                                                                                                          
-#         RELEASE_IMAGE: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.RELEASE_REVISION }}
-#       with:                                                                                                         
-#            args: set image deployment/my-pod app=${{ env.RELEASE_IMAGE }} --record -n $dev   
-        
-        
+        kubectl apply -f deployProd.yaml
+        kubectl apply -f serviceProd.yaml
+        kubectl rollout restart deployment React-Form -n dev
