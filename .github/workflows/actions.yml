@@ -1,6 +1,9 @@
 name: Github to Jira integration
 
-on: pull_request
+on: 
+  push: 
+    branches: 
+      - 'features/**'
 
 jobs:
   test-transition-issue:
@@ -27,20 +30,20 @@ jobs:
         issue: ${{ github.head_ref }}
         comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"  
 
-  PrRequest: 
-    needs: test-transition-issue
-    name: create_prRequest
-    runs-on: ubuntu-latest
-    steps:
-    - name: Login
-      uses: atlassian/gajira-login@master
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-    - name: Transition review
-      uses: atlassian/gajira-transition@master
-      with:
-        issue: ${{ github.head_ref }}
-        transition: "ReadyForCodeReview"    
+#   PrRequest: 
+#     needs: test-transition-issue
+#     name: create_prRequest
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Login
+#       uses: atlassian/gajira-login@master
+#       env:
+#         JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
+#         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
+#         JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+#     - name: Transition review
+#       uses: atlassian/gajira-transition@master
+#       with:
+#         issue: ${{ github.head_ref }}
+#         transition: "ReadyForCodeReview"    
     
