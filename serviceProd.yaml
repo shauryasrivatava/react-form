@@ -4,7 +4,7 @@ metadata:
   name: svc-prod
 spec:
   selector:
-    app: Form
+    app: form
   ports:
    - protocol: TCP
      port: 8000

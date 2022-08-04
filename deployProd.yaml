@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ReactForm
+  name: react-form
   namespace: default
   labels:
-    app: Form
+    app: form
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Form
+      app: form
   template:
     metadata:
       labels:
-        app: Form
+        app: form
     spec:
       containers: 
       - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2:latest
-        name: Form
+        name: form
         imagePullPolicy: Always 
  
         ports:
