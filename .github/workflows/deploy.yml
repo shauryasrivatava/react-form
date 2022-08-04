@@ -50,4 +50,4 @@ jobs:
       run: |
         kubectl apply -f deployProd.yaml
         kubectl apply -f serviceProd.yaml
-        kubectl rollout restart deployment react-form -n prod
+        kubectl rollout restart deployment react-form -n default
