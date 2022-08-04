@@ -48,6 +48,6 @@ jobs:
 
     - name: Deploy image to Amazon EKS
       run: |
-        kubectl apply -f deployProd.yaml
-        kubectl apply -f serviceProd.yaml
-        kubectl rollout restart deployment react-form -n default
+        kubectl apply -f deployQa.yaml
+        kubectl apply -f serviceQa.yaml
+        kubectl rollout restart deployment react-form -n qa

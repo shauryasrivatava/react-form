@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-form
+  namespace: qa
+  labels:
+    app: form
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: form
+  template:
+    metadata:
+      labels:
+        app: form
+    spec:
+      containers: 
+      - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2qa:latest
+        name: form
+        imagePullPolicy: Always 
+ 
+        ports:
+        - containerPort: 8000
+
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "500m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
