@@ -16,7 +16,7 @@ spec:
         app: form
     spec:
       containers: 
-      - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2qa:latest
+      - image: 244740641779.dkr.ecr.us-east-1.amazonaws.com/team2:latest
         name: form
         imagePullPolicy: Always 
  
