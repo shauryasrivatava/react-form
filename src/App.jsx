@@ -16,7 +16,7 @@ export default class App extends React.Component {
                     <TitleHeader className="text-center" title="React"/>
                     <br></br>         
             <div className="text-center">
-                    <h1>made by team2</h1>
+                    <h1>made by team2222</h1>
                     <h3>Deepu</h3>
                     <h3>Shaurya</h3>
                     <h3>Mukesh</h3>
