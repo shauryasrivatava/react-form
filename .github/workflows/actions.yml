@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Login
-      run: echo "${{ github.head_ref }}"
+      run: echo ${{ github.head_ref }}
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
         JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
