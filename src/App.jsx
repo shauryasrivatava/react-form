@@ -15,7 +15,7 @@ export default class App extends React.Component {
                 <Jumbotron>
                     <TitleHeader className="text-center" title="React" />
                     <br></br>
-                    <h1 className="text-center">V1.4</h1>
+                    <h1 className="text-center">V1.7</h1>
                 </Jumbotron>
                 <Container>
                     <Row>
