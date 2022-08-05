@@ -2,7 +2,7 @@ name: pr merge
 
 on:
   pull_request:
-    types: [closed]
+#     types: [opened]
     branches:
       - dev
 
