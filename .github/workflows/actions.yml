@@ -1,13 +1,9 @@
 name: Github to Jira integration
 
-<<<<<<< HEAD
 on: 
   pull_request: 
     branches: 
       - dev
-=======
-on: pull_request  
->>>>>>> dc6f3387bbac899c73448374f1eabf355b775555
 
 jobs:
   test-transition-issue:
