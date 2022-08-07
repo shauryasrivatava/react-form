@@ -1,5 +1,7 @@
 on:
-  push
+  push: 
+    branches: 
+      - 'features/**'
 
 name: Test Find Issue Key
 
