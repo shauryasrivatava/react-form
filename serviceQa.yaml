@@ -5,6 +5,7 @@ metadata:
 spec:
   selector:
     app: form
+    
   ports:
    - protocol: TCP
      port: 8000
