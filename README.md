@@ -8,7 +8,7 @@ Testing examples include:
 - Snapshot testing on stateless compon
 - Testing props on stateless component
 - Text input change handler testing
-- Multi Select change handler testing
+- Multi Select change hand
 - Checkbox change handler testing
 - Form submit event testing
 
