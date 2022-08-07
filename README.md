@@ -6,7 +6,7 @@ This is a simple React form unit test example. On submit, it pops up an alert th
 
 Testing examples include:
 - Snapshot testing on stateless compon
-- Testing props on stateless component
+- Testing props on stateless co
 - Text input change handler testing
 - Multi Select change handler testing
 - Checkbox change handler testing
