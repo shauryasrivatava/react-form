@@ -19,7 +19,7 @@ Testing examples include:
 - [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 - [Typechecking With PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
-## Running Test
+## Runnin
 ```bash
 yarn test
 ```
