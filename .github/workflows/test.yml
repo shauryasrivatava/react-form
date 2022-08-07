@@ -19,9 +19,10 @@ jobs:
         
     - name: Find Issue Key
       id: find
-      uses: atlassian/gajira-find-issue-key@master
+      uses: atlassian/gajira-find-issue-key@v2.0.2
       with:
-        from: commits
+        string: ${{ github.event.pull_request.title }}
+        from: ""
         
         
 #     - name: Transition issue
