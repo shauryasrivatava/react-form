@@ -18,6 +18,7 @@ jobs:
         JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
         
     - name: Find Issue Key
+      id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
         string: ${{ github.event.ref }}
