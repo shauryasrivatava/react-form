@@ -1,0 +1,90 @@
+name: pr merge
+
+on:
+  pull_request:
+    branches:
+      - QA
+
+jobs:
+
+  QA: 
+    name: Transition Issue
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Login
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          
+      - name: Find Issue Key
+        id: find2
+        uses: atlassian/gajira-find-issue-key@v2.0.2
+        with: 
+          string: ${{ github.event.pull_request.title }}
+          from: ""
+          
+      - name: Transition review
+        uses: atlassian/gajira-transition@master
+        with:
+          issue: ${{ steps.find2.outputs.issue }}
+          transition: "ReadyForQAReview"
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm test -- --coverage
+
+      - name: Transition review
+        uses: atlassian/gajira-transition@master
+        with:
+          issue: ${{ steps.find2.outputs.issue }}
+          transition: "ReadyForQADeployment"
+      
+      # - name: Login
+      #   uses: atlassian/gajira-login@master
+      #   env:
+      #     JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
+      #     JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
+      #     JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+      - name: Transition review
+        uses: atlassian/gajira-transition@master
+        with:
+          issue: ${{ steps.find2.outputs.issue }}
+          transition: "ReadyForStagingRelease"
+
+  Sonar: 
+    needs: QA
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: sonarsource/sonarqube-scan-action@dev
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: Login
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASEURL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          
+      - name: Find Issue Key
+        id: find2
+        uses: atlassian/gajira-find-issue-key@v2.0.2
+        with: 
+          string: ${{ github.event.pull_request.title }}
+          from: ""
+          
+      - name: Transition sonar
+        uses: atlassian/gajira-transition@master
+        if: github.event.pull_request.merged == true
+        with:
+          issue: ${{ steps.find2.outputs.issue }}
+          transition: "ReadyForProdRelease"
