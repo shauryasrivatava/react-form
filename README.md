@@ -24,7 +24,7 @@ Testing examples include:
 yarn test
 ```
 
-## Starting the app
+## Startingapp
 ```bash
 yarn start
 ```
