@@ -26,7 +26,7 @@ jobs:
 #         from: commits
         
     - name: Find Issue Key
-      uses: ./
+      uses: atlassian/gajira-find-issue-key@master
       with:
         string: ${{ github.event.ref }} will search in branch name
 
