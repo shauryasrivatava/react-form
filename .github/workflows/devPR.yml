@@ -21,7 +21,7 @@ jobs:
       id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
-        string: ${{ github.event.ref }}
+        from: commits
         
         
     - name: Transition issue
@@ -78,8 +78,10 @@ jobs:
         kubectl apply -f deployProd.yaml
         kubectl apply -f serviceProd.yaml
         kubectl rollout restart deployment react-form -n default
+
   test-transition-issue:
     name: Transition Issue
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
     - name: Login
@@ -93,7 +95,7 @@ jobs:
       id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
-        string: ${{ github.event.ref }}
+        from: commits
         
         
     - name: Transition issue
