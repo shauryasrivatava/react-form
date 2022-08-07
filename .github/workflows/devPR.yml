@@ -21,7 +21,7 @@ jobs:
       id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
-        string: ${{ github.event.ref }}
+        from: commits
         
     - name: Transition review
       uses: atlassian/gajira-transition@master
@@ -92,7 +92,7 @@ jobs:
       id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
-        string: ${{ github.event.ref }} will search in branch name
+        from: commits
 
     - name: Transition merged
       uses: atlassian/gajira-transition@master
