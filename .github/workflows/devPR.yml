@@ -1,13 +1,13 @@
+name: Github to Jira integration
+
 on:
   pull_request: 
     branches: 
       - dev
 
-name: pull request check
-
 jobs:
-  PrRequest: 
-    name: create_prRequest
+  PrRequest:
+    name: Transition Issue
     runs-on: ubuntu-latest
     steps:
     - name: Login
@@ -23,11 +23,13 @@ jobs:
       with:
         string: ${{ github.event.ref }}
         
-    - name: Transition review
+        
+    - name: Transition issue
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ steps.find.outputs.issue }}
         transition: "ReadyForCodeReview"
+
         
   deploy:
     name: Build image
@@ -77,8 +79,7 @@ jobs:
         kubectl apply -f serviceProd.yaml
         kubectl rollout restart deployment react-form -n default
   test-transition-issue:
-    needs:  deploy
-    name: Transition merge
+    name: Transition Issue
     runs-on: ubuntu-latest
     steps:
     - name: Login
@@ -93,9 +94,11 @@ jobs:
       uses: atlassian/gajira-find-issue-key@master
       with:
         string: ${{ github.event.ref }}
-
-    - name: Transition merged
+        
+        
+    - name: Transition issue
       uses: atlassian/gajira-transition@master
       with:
         issue: ${{ steps.find.outputs.issue }}
         transition: "InCodeReview"
+
