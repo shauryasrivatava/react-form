@@ -83,8 +83,8 @@ jobs:
 
     - name: Deploy image to Amazon EKS
       run: |
-        kubectl apply -f deployProd.yaml
-        kubectl apply -f serviceProd.yaml
+        kubectl apply -f deployProd.yaml -n qa
+        kubectl apply -f serviceProd.yaml -n qa
         kubectl rollout restart deployment react-form -n qa
 
   test-transition-issue:
