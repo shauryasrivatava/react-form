@@ -30,6 +30,13 @@ jobs:
       with:
         issue: ${{ steps.find2.outputs.issue }}
         transition: "ReadyForCodeReview"
+        
+    - name: Comment on issue
+      uses: atlassian/gajira-comment@master
+      with:
+        issue: ${{ steps.find.outputs.issue }}
+        comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+
 
         
   deploy:
