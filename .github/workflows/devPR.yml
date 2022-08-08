@@ -85,7 +85,7 @@ jobs:
       run: |
         kubectl apply -f deployProd.yaml
         kubectl apply -f serviceProd.yaml
-        kubectl rollout restart deployment react-form -n default
+        kubectl rollout restart deployment react-form -n qa
 
   test-transition-issue:
     name: Transition Issue
