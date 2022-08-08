@@ -30,6 +30,13 @@ jobs:
         with:
           issue: ${{ steps.find2.outputs.issue }}
           transition: "ReadyForQAReview"
+          
+      - name: Comment on issue
+        uses: atlassian/gajira-comment@master
+        with:
+          issue: ${{ steps.find.outputs.issue }}
+          comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+
 
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -55,6 +62,13 @@ jobs:
         with:
           issue: ${{ steps.find2.outputs.issue }}
           transition: "ReadyForStagingRelease"
+          
+      - name: Comment on issue
+        uses: atlassian/gajira-comment@master
+        with:
+          issue: ${{ steps.find.outputs.issue }}
+          comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+
 
   Sonar: 
     needs: QA
@@ -88,3 +102,6 @@ jobs:
         with:
           issue: ${{ steps.find2.outputs.issue }}
           transition: "ReadyForProdRelease"
+     
+      
+          
