@@ -34,8 +34,8 @@ jobs:
       - name: Comment on issue
         uses: atlassian/gajira-comment@master
         with:
-          issue: ${{ steps.find.outputs.issue }}
-          comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+          issue: ${{ steps.find2.outputs.issue }}
+          comment: "${{ steps.find2.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
 
 
       - uses: actions/checkout@v3
@@ -54,8 +54,8 @@ jobs:
       - name: Comment on issue
         uses: atlassian/gajira-comment@master
         with:
-          issue: ${{ steps.find.outputs.issue }}
-          comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+          issue: ${{ steps.find2.outputs.issue }}
+          comment: "${{ steps.find2.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
       
       # - name: Login
       #   uses: atlassian/gajira-login@master
@@ -72,8 +72,8 @@ jobs:
       - name: Comment on issue
         uses: atlassian/gajira-comment@master
         with:
-          issue: ${{ steps.find.outputs.issue }}
-          comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+          issue: ${{ steps.find2.outputs.issue }}
+          comment: "${{ steps.find2.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
 
 
   Sonar: 
@@ -112,7 +112,7 @@ jobs:
       - name: Comment on issues
         uses: atlassian/gajira-comment@master
         with:
-          issue: ${{ steps.find.outputs.issue }}
-          comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+          issue: ${{ steps.find2.outputs.issue }}
+          comment: "${{ steps.find2.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
       
           
