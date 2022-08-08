@@ -34,8 +34,8 @@ jobs:
     - name: Comment on issue
       uses: atlassian/gajira-comment@master
       with:
-        issue: ${{ steps.find.outputs.issue }}
-        comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+        issue: ${{ steps.find2.outputs.issue }}
+        comment: "${{ steps.find2.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
 
 
         
@@ -116,6 +116,6 @@ jobs:
     - name: Comment on issue
       uses: atlassian/gajira-comment@master
       with:
-        issue: ${{ steps.find.outputs.issue }}
-        comment: "${{ github.head_ref }} pushed to repository: ${{ github.event.repository.full_name }}"
+        issue: ${{ steps.find3.outputs.issue }}
+        comment: "${{ steps.find3.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
 
