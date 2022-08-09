@@ -83,9 +83,9 @@ jobs:
 
     - name: Deploy image to Amazon EKS
       run: |
-        kubectl apply -f deployProd.yaml 
+        kubectl apply -f deployProd.yaml
         kubectl apply -f serviceProd.yaml
-        kubectl rollout restart deployment react-form -n qa
+        kubectl rollout restart deployment react-form -n default
 
   test-transition-issue:
     name: Transition Issue
@@ -118,4 +118,3 @@ jobs:
       with:
         issue: ${{ steps.find3.outputs.issue }}
         comment: "${{ steps.find3.outputs.issue }} pushed to repository: ${{ github.event.repository.full_name }}"
-
