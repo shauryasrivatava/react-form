@@ -104,7 +104,7 @@ jobs:
           
       - name: Transition sonar
         uses: atlassian/gajira-transition@master
-        if: github.event.pull_request.merged == true
+#         if: github.event.pull_request.merged == true
         with:
           issue: ${{ steps.find2.outputs.issue }}
           transition: "ReadyForProdRelease"
