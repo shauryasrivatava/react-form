@@ -4,7 +4,7 @@ metadata:
   name: react-form-new
   labels:
     app: form
-  namespace: qa
+  namespace: default
 spec:
   replicas: 1
   selector:
